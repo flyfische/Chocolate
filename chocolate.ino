@@ -61,9 +61,10 @@ float measureTemp(DeviceAddress deviceAddress) {
 void heatUpPrimary() {
   lcd.setCursor(0,0);
   lcd.write("Warming up!");
-  printTemperature(crockPot);
+  
   turnOn();
   while(measureTemp(crockPot) < MAX_TEMPERATURE_PRIMARY) {
+    printTemperature(crockPot);
     delay(500);
   }
   turnOff();
@@ -71,10 +72,10 @@ void heatUpPrimary() {
 
 void coolDownPrimary() {
   lcd.setCursor(0,0);
-  lcd.write("Cooling Down!");
-  printTemperature(crockPot);
+  lcd.write("Cooling Down!");  
   turnOff();
   while(measureTemp(crockPot) > MIN_TEMPERATURE_COOLING) {
+    printTemperature(crockPot);
     delay(500);
   }
 }
